@@ -1,4 +1,12 @@
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import {
+  RouterProvider,
+  createBrowserRouter,
+  BrowserRouter,
+  useLocation,
+  Routes,
+  Route,
+  Router,
+} from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import {
@@ -9,6 +17,7 @@ import {
   NewsLetter,
   Cocktail,
   SinglePageError,
+  LandingLayout,
 } from "./pages";
 import { loader as landingLoader } from "./pages/Landing";
 import { loader as singleCocktailLoader } from "./pages/Cocktail";
@@ -22,6 +31,54 @@ const queryClient = new QueryClient({
   },
 });
 
+// const router = <createBrowserRouter></createBrowserRouter>;
+
+// const App = () => {
+//   const location = useLocation();
+//   const background = location.state && location.state.background;
+
+//   return (
+//     <QueryClientProvider client={queryClient}>
+//       {/* <Router> */}
+//       <div className="app">
+//         <Routes location={background || location}>
+//           <Route path="/" element={<HomeLayout />} errorElement={<Error />}>
+//             <Route
+//               index
+//               element={<Landing />}
+//               errorElement={<SinglePageError />}
+//               loader={landingLoader(queryClient)}
+//             />
+//             <Route
+//               path="newsLetter"
+//               element={<NewsLetter />}
+//               action={newsLetterAction}
+//             />
+//             <Route
+//               path="cocktail/:id"
+//               element={<Cocktail />}
+//               errorElement={<SinglePageError />}
+//               loader={singleCocktailLoader(queryClient)}
+//             />
+//             <Route path="about" element={<About />} />
+//           </Route>
+//         </Routes>
+//         {background && (
+//           <Routes>
+//             <Route
+//               path="cocktail/:id"
+//               element={<Cocktail />}
+//               errorElement={<SinglePageError />}
+//               loader={singleCocktailLoader(queryClient)}
+//             />
+//           </Routes>
+//         )}
+//       </div>
+//       {/* </Router> */}
+//     </QueryClientProvider>
+//   );
+// };
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -29,16 +86,18 @@ const router = createBrowserRouter([
     errorElement: <Error />,
     children: [
       {
-        index: true,
+        path: "/",
         element: <Landing />,
         errorElement: <SinglePageError />,
         loader: landingLoader(queryClient),
-      },
-      {
-        path: "cocktail/:id",
-        errorElement: <SinglePageError />,
-        loader: singleCocktailLoader(queryClient),
-        element: <Cocktail />,
+        children: [
+          {
+            path: "cocktail/:id",
+            errorElement: <SinglePageError />,
+            loader: singleCocktailLoader(queryClient),
+            element: <Cocktail />,
+          },
+        ],
       },
       {
         path: "newsLetter",

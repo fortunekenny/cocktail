@@ -7,7 +7,7 @@ const Navbar = () => {
     <Wrapper>
       {/* Wrapper is a styled-component */}
       <div className="nav-center">
-        <span className="logo">MixMaster</span>
+        <span className="logo">MixTail</span>
         <div className="nav-links">
           <NavLink to="/" className="nav-link">
             Home

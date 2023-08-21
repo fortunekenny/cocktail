@@ -1,9 +1,12 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
-const Wrapper = styled.div`
+const Wrapper = styled.section`
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+  margin: 0rem 6rem;
+  /*flex-wrap: wrap;
+  justify-content: center;*/
+  background: var(--lightest-variation);
 `;
 
 export default Wrapper;

@@ -1,5 +1,5 @@
 import React from "react";
-import { useLoaderData } from "react-router-dom";
+import { Outlet, useLoaderData } from "react-router-dom";
 import axios from "axios";
 import CocktailList from "../components/CocktailList";
 import SearchForm from "../components/SearchForm";
@@ -48,6 +48,7 @@ const Landing = () => {
     <>
       <SearchForm searchTerm={searchTerm} />
       <CocktailList drinks={drinks} />
+      <Outlet />
     </>
   );
 };

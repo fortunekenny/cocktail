@@ -1,5 +1,7 @@
 /* ============= GLOBAL CSS =============== */
 
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Montserrat:wght@400;700&display=swap");
+
 *,
 ::after,
 ::before {
@@ -13,6 +15,32 @@ html {
 } /*16px*/
 
 :root {
+  /* new color pallete */
+  --primary-color: #3dc0cc;
+  --primary-gradient: #49e4f2;
+  --primary-color-hover: #2e9099;
+  --darkest-variation: #143033;
+  --dark-variation: #507073;
+  --medium-variation: #87a5a8;
+  --light-variation: #daf0f2;
+  --lightest-variation: #f5f9fa;
+  --white: #ffffff;
+  /*end pallete*/
+  /* font size */
+  --hd1: 2.75rem;
+  --hd2: 2.25rem;
+  --hd3: 1.75rem;
+  --hd4: 1.375rem;
+  --bodytext: 1.125rem;
+  --smalltext: 0.938rem;
+  /*spacing*/
+  --xs: 10.7px;
+  --s: 21px;
+  --m: 32px;
+  --l: 42px;
+  --xl: 64px;
+  --xxl: 106.7px;
+
   /* colors */
   --primary-100: #d1fae5;
   --primary-200: #a7f3d0;
@@ -65,23 +93,24 @@ html {
 }
 
 body {
-  background: var(--backgroundColor);
+  background: var(--lightest-variation);
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-  font-weight: 400;
+  /* font-weight: 400; */
   line-height: 1;
-  color: var(--textColor);
+  color: var(--darkest-variation) /*(--textColor)*/;
 }
 p {
   margin: 0;
+  font-size: var(--bodytext);
 }
 h1,
 h2,
 h3,
-h4,
-h5 {
+h4 {
   margin: 0;
-  font-family: var(--headingFont);
+  /* font-family: var(--headingFont); */
+  font-family: "Lato", sans-serif;
   font-weight: 400;
   line-height: 1;
   text-transform: capitalize;
@@ -89,26 +118,27 @@ h5 {
 }
 
 h1 {
-  font-size: clamp(2rem, 5vw, 5rem); /* Large heading */
+  font-size: var(--hd1); /*clamp(2rem, 5vw, 5rem);  Large heading */
 }
 
 h2 {
-  font-size: clamp(1.5rem, 3vw, 3rem); /* Medium heading */
+  font-size: var(--hd2); /*clamp(1.5rem, 3vw, 3rem);  Medium heading */
 }
 
 h3 {
-  font-size: clamp(1.25rem, 2.5vw, 2.5rem); /* Small heading */
+  font-size: var(--hd3); /*clamp(1.25rem, 2.5vw, 2.5rem);  Small heading */
 }
 
 h4 {
-  font-size: clamp(1rem, 2vw, 2rem); /* Extra small heading */
+  font-size: var(--hd4); /*clamp(1rem, 2vw, 2rem);  Extra small heading */
 }
 
 h5 {
-  font-size: clamp(0.875rem, 1.5vw, 1.5rem); /* Tiny heading */
+  font-weight: 350;
+  font-size: var(--bodytext); /*clamp(0.875rem, 1.5vw, 1.5rem);  Tiny heading*/
 }
 
-/* BIGGER FONTS */
+/* BIGGER FONTS *
 /* h1 {
   font-size: clamp(3rem, 6vw, 6rem);
 }
@@ -158,19 +188,29 @@ ul {
 .btn {
   cursor: pointer;
   color: var(--white);
-  background: var(--primary-500);
-  border: transparent;
+  background: var(--primary-color);
+  border: 1px transparent solid;
   border-radius: var(--borderRadius);
   letter-spacing: var(--letterSpacing);
   padding: 0.375rem 0.75rem;
-  box-shadow: var(--shadow-1);
-  transition: var(--transition);
+  /* box-shadow: var(--shadow-1); */
+  /* transition: var(--transition); */
   text-transform: capitalize;
   display: inline-block;
+  transition: all 0.5s ease-in-out;
 }
 .btn:hover {
-  background: var(--primary-700);
-  box-shadow: var(--shadow-3);
+  background: var(--white);
+  border-width: 1px;
+  border-style: solid;
+  border-image: linear-gradient(
+      to right,
+      rgba(255, 255, 255, 0),
+      rgba(46, 144, 153, 1),
+      rgba(255, 255, 255, 0)
+    )
+    1;
+  color: var(--darkest-variation);
 }
 .btn-hipster {
   color: var(--primary-500);
@@ -224,7 +264,7 @@ ul {
   padding: 0.375rem 0.75rem;
   border-radius: var(--borderRadius);
   background: var(--backgroundColor);
-  border: 1px solid var(--grey-200);
+  border: 1px solid var(--medium-variation);
 }
 
 .form-row {
@@ -280,8 +320,224 @@ PROJECT CSS
 =============
 */
 .page {
-  width: var(--view-width);
-  max-width: var(--max-width);
-  margin: 0 auto;
-  padding: 5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0rem auto;
+  padding: 5rem 0rem;
+}
+
+/* MODAL DESIGN */
+
+.drink-bg {
+  width: 100%;
+  /* height: 100vh; */
+  background: rgba(0, 0, 0, 0.5);
+  /* display: flex; */
+  /* justify-content: center; */
+  /* align-items: center; */
+  /* border: blue 1px solid; */
+  margin-top: 3rem;
+  position: absolute;
+  top: 0px;
+  /* height: 80vh; */
+}
+
+[data-reach-dialog-overlay] {
+  z-index: 100;
+}
+
+[data-reach-dialog-content] {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+  /* width: 80%; */
+  padding: 0rem 0rem 0rem 0rem;
+  margin-top: 10rem;
+  border-radius: 7rem 0rem 0rem 7rem;
+  overflow: hidden;
+}
+
+.drink-img {
+  /* width: 30rem; */
+  border-radius: 7rem 0rem 0rem 7rem;
+  object-fit: cover;
+  /* height: 50%; */
+}
+.main {
+  /* width: 10rem;
+  height: 10rem; */
+  /* font-family: "Montserrat", sans-serif; */
+  /* display: flex; */
+  /* justify-content: center; */
+  /* align-items: center; */
+  /* background: var(--white); */
+  /* margin: 40rem 2rem; */
+  /* border-radius: 7rem 0rem 0rem 7rem; */
+  /* height: 60vh; */
+}
+
+/* .drink-img-container {
+  display: flex;
+  /* height: 60vh; 
+} */
+
+.drink-data {
+  display: flex;
+  /* margin: 0rem 2rem; */
+  /* align-items: ; */
+}
+
+.navdatpre {
+  display: grid;
+  grid-template-rows: fit-content(100%);
+  overflow: hidden;
+  /* justify-content: flex-start; */
+  /* margin: 0 2rem; */
+}
+
+.drink-nav {
+  /* border: #059669 1px solid; */
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  /* grid-template-rows: 1fr; */
+  align-items: center;
+  /* justify-content: space-around; */
+  margin-bottom: 2rem;
+  font-size: var(--hd4);
+  text-transform: capitalize;
+  box-shadow: 2.67px 2.67px 10.67px 2.67px var(--light-variation);
+  /* height: 6rem; */
+  /* border-bottom: var(--light-variation) 5px solid; */
+  /* box-shadow: var(--shadow-4); */
+  /* margin-bottom: 2rem; */
+}
+
+.drink-nav > p {
+  /* border: #0f172a 1px solid; */
+  /* color: var(--primary-color); */
+  border-radius: 2rem;
+  padding: 15px 5%;
+  /* border: var(--primary-color) 1px solid; */
+  color: var(--darkest-variation);
+  /* background-color: var(--primary-color); */
+  background-image: linear-gradient(
+    var(--primary-gradient),
+    var(--primary-color)
+  );
+  box-shadow: 2.67px 2.67px 10.67px 2.67px var(--light-variation);
+  transition: all 0.5s ease-in-out;
+  cursor: pointer;
+  margin: 1rem 1rem 1rem 1rem;
+  font-size: var(--hd4);
+
+  text-align: center;
+}
+
+.drink-nav p:first-of-type {
+  text-transform: uppercase;
+  font-weight: bolder;
+}
+
+.drink {
+  margin: 0 4rem;
+}
+
+.general-info {
+  text-transform: capitalize;
+  min-width: 37rem;
+}
+.general-info > p {
+  /* display: flex; */
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.6rem 2rem;
+  margin: 0.5rem 0rem;
+  font-weight: 400;
+  font-size: var(--hd4);
+  box-shadow: 2.67px 2.67px 10.67px 2.67px var(--light-variation);
+  /* var(--medium-variation) */
+}
+
+.general-info > p > span {
+  font-weight: 500;
+  font-size: var(--hd3);
+  padding: 0.25rem;
+}
+
+.ing-qty {
+  display: grid;
+}
+
+.ing-qty div {
+  display: grid;
+  grid-template-columns: auto auto;
+  justify-content: space-between;
+  /* align-items: center; */
+  /* padding: 0.6rem 2rem; */
+  /* margin: 0.5rem 0rem; */
+  background: var(--lightest-variation);
+  /* font-weight: 400; */
+  /* font-size: var(--hd3); */
+  text-transform: capitalize;
+  /* box-shadow: 0px 0px 10.67px 2.67px var(--light-variation); */
+  /* min-width: 37rem; */
+  border-bottom: var(--light-variation) 1px solid;
+}
+
+.ing,
+.qty {
+  font-weight: 500;
+  font-size: var(--hd3);
+  padding: 0.1rem 2rem;
+  margin: 0.5rem 0rem;
+}
+
+.mixin {
+  margin-top: 0.2rem;
+}
+
+.instruct {
+  display: flex;
+  align-items: center;
+  /* font-weight: 400; */
+  /* font-size: var(--hd4) */
+  /* padding: 0.6rem 2rem; */
+  /* margin: 0.5rem 0rem; */
+  /* background: var(--lightest-variation); */
+}
+.instruct div {
+  margin: 0.2rem 0rem;
+  padding-left: 0.2rem;
+  background-color: var(--lightest-variation);
+}
+
+.instruct p {
+  font-size: var(--hd4);
+  margin: 1rem 0rem;
+  padding: 0 0.2rem;
+  line-height: 1.5;
+  /* text-transform: capitalize; */
+}
+.instruct span {
+  display: block;
+  font-size: var(--bodytext);
+  /* var(--hd4); */
+  /* margin: 0.5rem; */
+  padding: 0.5rem;
+  border-radius: 3px;
+  color: var(--lightest-variation);
+  background-color: var(--darkest-variation);
+}
+
+.modalButton {
+  color: var(--medium-variation);
+  position: absolute;
+  /* top: 0rem; */
+  right: 9.5rem;
+  font-size: var(--hd2);
+  outline-style: none;
+  border: none;
+  background: none;
 }
