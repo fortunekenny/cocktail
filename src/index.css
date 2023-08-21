@@ -344,7 +344,7 @@ PROJECT CSS
 }
 
 [data-reach-dialog-overlay] {
-  z-index: 10;
+  z-index: 100;
 }
 
 [data-reach-dialog-content] {
