@@ -101,56 +101,56 @@ const Cocktail = () => {
       initialFocusRef={buttonRef}
     >
       <img src={image} alt={name} className="drink-img" />
-      <section className="drink-data">
-        <article className="navdatpre">
-          <nav className="drink-nav">
-            {cocktailBar.map((menus, index) => {
-              return (
-                <p key={index} onClick={() => toggleButton(index)}>
-                  {menus}
-                </p>
-              );
-            })}
-          </nav>
+      {/* <section className="drink-data"> */}
+      <article className="navdatpre">
+        <nav className="drink-nav">
+          {cocktailBar.map((menus, index) => {
+            return (
+              <p key={index} onClick={() => toggleButton(index)}>
+                {menus}
+              </p>
+            );
+          })}
+        </nav>
 
-          <div className="drink">
-            <section className="general-info">
-              {activeIndex === 0 && (
-                <BasicInfo
-                  category={category}
-                  alcohol={alcohol}
-                  glass={glass}
-                  date={date}
-                  iba={iba}
-                />
-              )}
-            </section>
-            <section className="ing-qty-container">
-              {activeIndex === 1 && (
-                <IngredientsMeasure
-                  validIngredients={validIngredients}
-                  validMeasurements={validMeasurements}
-                />
-              )}
-            </section>
-            <section className="mixin">
-              {activeIndex === 2 && (
-                <Instruction
-                  instructions={instructions}
-                  splitInstruct={splitInstruct}
-                />
-              )}
-            </section>
-          </div>
-          <button
-            className="modalButton"
-            // ref={buttonRef}
-            onClick={onDismiss}
-          >
-            <LiaTimesSolid />
-          </button>
-        </article>
-      </section>
+        <div className="drink">
+          <section className="general-info">
+            {activeIndex === 0 && (
+              <BasicInfo
+                category={category}
+                alcohol={alcohol}
+                glass={glass}
+                date={date}
+                iba={iba}
+              />
+            )}
+          </section>
+          <section className="ing-qty-container">
+            {activeIndex === 1 && (
+              <IngredientsMeasure
+                validIngredients={validIngredients}
+                validMeasurements={validMeasurements}
+              />
+            )}
+          </section>
+          <section className="mixin">
+            {activeIndex === 2 && (
+              <Instruction
+                instructions={instructions}
+                splitInstruct={splitInstruct}
+              />
+            )}
+          </section>
+        </div>
+        <button
+          className="modalButton"
+          // ref={buttonRef}
+          onClick={onDismiss}
+        >
+          <LiaTimesSolid />
+        </button>
+      </article>
+      {/* </section> */}
     </Dialog>
     /*
     <Wrapper>

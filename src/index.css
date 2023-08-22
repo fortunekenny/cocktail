@@ -349,8 +349,8 @@ PROJECT CSS
 
 [data-reach-dialog-content] {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
-  /* width: 80%; */
+  grid-template-columns: 1fr 2fr;
+  width: 75rem;
   padding: 0rem 0rem 0rem 0rem;
   margin-top: 10rem;
   border-radius: 7rem 0rem 0rem 7rem;
@@ -358,7 +358,7 @@ PROJECT CSS
 }
 
 .drink-img {
-  /* width: 30rem; */
+  width: 30rem;
   border-radius: 7rem 0rem 0rem 7rem;
   object-fit: cover;
   /* height: 50%; */
@@ -540,4 +540,19 @@ PROJECT CSS
   outline-style: none;
   border: none;
   background: none;
+}
+
+@media screen and (max-width: 1230px) {
+  [data-reach-dialog-content] {
+    display: flex;
+    flex-wrap: wrap;
+    width: 50rem;
+    border-radius: 0rem 0rem 7rem 7rem;
+  }
+  .drink-img {
+    width: 50rem;
+    border-radius: 0rem 0rem 7rem 7rem;
+    object-fit: cover;
+    /* height: 50%; */
+  }
 }
