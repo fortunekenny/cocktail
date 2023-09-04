@@ -363,6 +363,14 @@ PROJECT CSS
   object-fit: cover;
   /* height: 50%; */
 }
+.drink-img-bgd {
+  z-index: -5;
+  visibility: hidden;
+  width: 30rem;
+  border-radius: 7rem 0rem 0rem 7rem;
+  object-fit: cover;
+  /* height: 50%; */
+}
 .main {
   /* width: 10rem;
   height: 10rem; */
@@ -550,9 +558,21 @@ PROJECT CSS
     border-radius: 0rem 0rem 7rem 7rem;
   }
   .drink-img {
+    position: absolute;
+    top: 60px;
+    left: 80px;
     width: 50rem;
     border-radius: 0rem 0rem 7rem 7rem;
-    object-fit: cover;
-    /* height: 50%; */
+    object-fit: contain;
+    height: calc(46rem / 2);
+  }
+  .drink-img-bgd {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 50rem;
+    border-radius: 0rem 0rem 7rem 7rem;
+    object-fit: fill;
+    height: calc(46rem / 2);
   }
 }

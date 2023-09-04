@@ -100,7 +100,14 @@ const Cocktail = () => {
       onDismiss={onDismiss}
       initialFocusRef={buttonRef}
     >
-      <img src={image} alt={name} className="drink-img" />
+      //{" "}
+      <div style={"position: relative"}>
+        /*
+        <img className="drink-img-bgd" />
+        */
+        <img src={image} alt={name} className="drink-img" />
+        //{" "}
+      </div>
       {/* <section className="drink-data"> */}
       <article className="navdatpre">
         <nav className="drink-nav">
